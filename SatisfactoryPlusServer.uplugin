@@ -1,0 +1,42 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.2.3",
+	"SemVersion": "1.2.3",
+	"FriendlyName": "Satisfactory Plus Server",
+	"Description": "Dedicated Server compatibility layer for Satisfactory Plus v1.2.3. Provides server-side fixes, replication support, and multiplayer compatibility without modifying original gameplay.",
+	"Category": "Modding",
+	"CreatedBy": "X3S2",
+	"CreatedByURL": "https://github.com/X3S2/Satisfactory-Plus-Server",
+	"DocsURL": "https://github.com/X3S2/Satisfactory-Plus-Server",
+	"MarketplaceURL": "",
+	"SupportURL": "https://github.com/X3S2/Satisfactory-Plus-Server/issues",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "SatisfactoryPlusServer",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "SML",
+			"SemVersion": "^3.11.1",
+			"Enabled": true
+		},
+		{
+			"Name": "SatisfactoryPlus",
+			"SemVersion": "^1.2.3",
+			"Enabled": true,
+			"Optional": false
+		}
+	],
+	"SupportedTargetPlatforms": [
+		"Windows",
+		"LinuxServer"
+	]
+}

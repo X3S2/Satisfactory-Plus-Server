@@ -1,0 +1,102 @@
+# Build artifacts
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+Build/
+
+# Unreal Engine
+*.sln
+*.suo
+*.xcodeproj
+*.xcworkspace
+
+# Visual Studio
+.vs/
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+
+# Rider
+.idea/
+*.sln.iml
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Cache files
+*.ipa
+*.xcuserstate
+*.xcscmblueprint
+
+# OS specific
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Packaging
+*.pak
+*.upk
+*.uproject
+!SatisfactoryPlusServer.uplugin
+
+# Logs
+*.log
+Logs/
+
+# Content (Assets werden nicht versioniert, nur Code)
+Content/
+!Content/.gitkeep
+
+# Local settings
+Config/Saved/
+Config/Windows/
+
+# Temporary files
+*.tmp
+*.temp

@@ -1,0 +1,29 @@
+{
+	"$schema": "https://raw.githubusercontent.com/satisfactorymodding/SatisfactoryModLoader/master/Schemas/SML-3.0.0.schema.json",
+	"name": "SatisfactoryPlusServer",
+	"mod_id": "SatisfactoryPlusServer",
+	"version": "1.2.3",
+	"description": "Dedicated Server compatibility layer for Satisfactory Plus v1.2.3",
+	"authors": [
+		"X3S2"
+	],
+	"objects": [],
+	"dependencies": {
+		"SML": {
+			"condition": "^3.11.1",
+			"optional": false
+		},
+		"SatisfactoryPlus": {
+			"condition": "^1.2.3",
+			"optional": false
+		}
+	},
+	"optional_dependencies": {},
+	"metadata": {
+		"homepage": "https://github.com/X3S2/Satisfactory-Plus-Server",
+		"source": "https://github.com/X3S2/Satisfactory-Plus-Server",
+		"issues": "https://github.com/X3S2/Satisfactory-Plus-Server/issues"
+	},
+	"game_version": ">=365306",
+	"semver": "1.2.3"
+}
