@@ -2,24 +2,65 @@
 
 Detaillierte Anleitung zur Installation von Satisfactory Plus Server.
 
+## ⚠️ **WICHTIGER HINWEIS**
+
+Diese Mod ist aktuell **nur auf GitHub verfügbar** und muss manuell kompiliert und installiert werden.
+Sie ist **NOCH NICHT** auf ficsit.app veröffentlicht und kann **NICHT** über den Satisfactory Mod Manager (SMM) installiert werden.
+
+Für die Nutzung ist ein **Unreal Engine Build** erforderlich.
+
+---
+
+## 📋 Was benötigt der Server vs. Client?
+
+### 🖥️ **Auf dem DEDICATED SERVER:**
+| Komponente | Quelle | Installation |
+|-----------|--------|--------------|
+| **Satisfactory Dedicated Server** | Steam (App ID: 1690800) | SteamCMD oder Steam Client |
+| **SML** | SMM (automatisch) | Via Satisfactory Mod Manager |
+| **Satisfactory Plus** (Original von Kyrium) | ficsit.app | Via Satisfactory Mod Manager |
+| **Satisfactory Plus Server** (diese Mod) | GitHub (noch nicht veröffentlicht) | Manuell (siehe unten) |
+
+### 💻 **Auf dem CLIENT:**
+| Komponente | Quelle | Installation |
+|-----------|--------|--------------|
+| **Satisfactory Game** | Steam/Epic | Steam oder Epic Games Launcher |
+| **SML** | SMM (automatisch) | Via Satisfactory Mod Manager |
+| **Satisfactory Plus** (Original von Kyrium) | ficsit.app | Via Satisfactory Mod Manager |
+| **Satisfactory Plus Server** (diese Mod) | GitHub (noch nicht veröffentlicht) | Manuell (siehe unten) |
+
+### ✅ **Wichtig:**
+- **JA**, du benötigst "Satisfactory Plus" von Kyrium auf Server UND Client
+- **JA**, du benötigst zusätzlich "Satisfactory Plus Server" (diese Mod) auf Server UND Client
+- **SML** wird automatisch installiert, wenn du Satisfactory Plus installierst
+- **Beide Mods** müssen die gleiche Version haben (1.2.3)
+
+---
+
 ## 📋 Inhaltsverzeichnis
-1. [Schnellstart](#schnellstart)
-2. [Dedicated Server Setup](#dedicated-server-setup)
-3. [Client Setup](#client-setup)
-4. [Troubleshooting](#troubleshooting)
-5. [Erweiterte Konfiguration](#erweiterte-konfiguration)
+1. [Schnellstart (wenn Mod auf ficsit.app verfügbar)](#schnellstart)
+2. [Manuelle Installation (aktuell)](#manuelle-installation)
+3. [Dedicated Server Setup](#dedicated-server-setup)
+4. [Client Setup](#client-setup)
+5. [Troubleshooting](#troubleshooting)
+6. [Erweiterte Konfiguration](#erweiterte-konfiguration)
 
 ---
 
 ## Schnellstart
 
+### ⚠️ Aktuell NICHT verfügbar
+Diese Anleitung gilt erst, wenn die Mod auf ficsit.app veröffentlicht ist.
+
 ### Voraussetzungen
 - Satisfactory 1.1+ (Build 365306+)
 - Satisfactory Mod Manager (SMM)
 - Satisfactory Plus 1.2.3
-- SML 3.11.1+
+- SML 3.11.1+ (wird automatisch installiert)
 
 ### Installation (5 Minuten)
+
+**⚠️ Diese Schritte funktionieren erst, wenn die Mod auf ficsit.app veröffentlicht ist!**
 
 **Für Server:**
 ```powershell
@@ -27,9 +68,9 @@ Detaillierte Anleitung zur Installation von Satisfactory Plus Server.
 # Download: https://github.com/satisfactorymodding/SatisfactoryModManager
 
 # 2. Mods über SMM installieren:
-# - SML (3.11.1+)
-# - Satisfactory Plus (1.2.3)
-# - Satisfactory Plus Server (1.2.3)
+# - Satisfactory Plus (1.2.3) ← Original-Mod von Kyrium
+#   SML wird automatisch mit installiert!
+# - Satisfactory Plus Server (1.2.3) ← Diese Mod (noch nicht verfügbar!)
 
 # 3. Server starten
 .\FactoryServer.exe
@@ -39,6 +80,56 @@ Detaillierte Anleitung zur Installation von Satisfactory Plus Server.
 - Gleiche Mods über SMM installieren
 - Spiel starten
 - Server beitreten
+
+---
+
+## Manuelle Installation
+
+### ⚠️ Aktuell erforderlich, da Mod noch nicht auf ficsit.app
+
+Diese Schritte sind für fortgeschrittene Benutzer mit Unreal Engine Erfahrung.
+
+#### Voraussetzungen
+- Unreal Engine 5.3+ mit Satisfactory SDK
+- Visual Studio 2022
+- Git
+- Satisfactory Modding Toolkit
+
+#### Schritt 1: Repository klonen
+```powershell
+git clone https://github.com/X3S2/Satisfactory-Plus-Server.git
+cd Satisfactory-Plus-Server
+```
+
+#### Schritt 2: Projekt kompilieren
+```powershell
+# Unreal Engine Project generieren
+# (Details abhängig vom Satisfactory Modding Setup)
+
+# In Visual Studio öffnen und kompilieren
+# Build → Build Solution
+```
+
+#### Schritt 3: Plugin packen
+```powershell
+# Packaging-Prozess abhängig vom Alpakit/SMM Setup
+# Erstellt: SatisfactoryPlusServer.zip
+```
+
+#### Schritt 4: Auf Server & Client installieren
+```powershell
+# Kopiere nach:
+# Server: <SatisfactoryServer>\FactoryGame\Mods\SatisfactoryPlusServer\
+# Client: <Satisfactory>\FactoryGame\Mods\SatisfactoryPlusServer\
+```
+
+#### Schritt 5: Satisfactory Plus installieren
+```powershell
+# Im Satisfactory Mod Manager:
+# 1. Suche "Satisfactory Plus"
+# 2. Installiere Version 1.2.3
+# 3. SML wird automatisch installiert
+```
 
 ---
 
@@ -63,10 +154,13 @@ steamcmd +login anonymous +app_update 1690800 validate +quit
 #### Schritt 3: Mods installieren
 In SMM:
 1. Gehe zu "Mods" Tab
-2. Installiere folgende Mods:
-   - **SML** (Version 3.11.1 oder höher)
-   - **Satisfactory Plus** (Version 1.2.3)
-   - **Satisfactory Plus Server** (Version 1.2.3)
+2. Suche nach **"Satisfactory Plus"** (von Kyrium)
+3. Installiere **Satisfactory Plus Version 1.2.3**
+   - ✅ **SML wird automatisch mit installiert** - du musst SML NICHT separat suchen!
+4. ⚠️ **Satisfactory Plus Server** ist noch nicht verfügbar - siehe [Manuelle Installation](#manuelle-installation)
+
+**Hinweis:** Im SMM findest du nur "Satisfactory Plus", nicht "SML". Das ist normal!
+SML wird als Dependency automatisch installiert.
 
 Alternativ manuell:
 ```powershell
@@ -74,9 +168,9 @@ Alternativ manuell:
 cd "C:\SatisfactoryServer\FactoryGame\Mods"
 
 # Lade und extrahiere Mods:
-# - SML.zip
-# - SatisfactoryPlus.zip
-# - SatisfactoryPlusServer.zip
+# - SatisfactoryPlus.zip (von ficsit.app)
+# - SatisfactoryPlusServer.zip (manuell kompiliert, siehe oben)
+# SML wird automatisch installiert
 ```
 
 #### Schritt 4: Server-Konfiguration
@@ -167,10 +261,13 @@ cd ~/SatisfactoryServer
 ### Schritt 2: Mods installieren
 In SMM:
 1. Tab "Mods" öffnen
-2. Folgende Mods installieren:
-   - **SML** (3.11.1+)
-   - **Satisfactory Plus** (1.2.3)
-   - **Satisfactory Plus Server** (1.2.3) ← **Wichtig!**
+2. Suche nach **"Satisfactory Plus"** (von Kyrium)
+3. Installiere **Satisfactory Plus Version 1.2.3**
+   - ✅ **SML wird automatisch installiert** - nicht separat suchen!
+4. ⚠️ **Satisfactory Plus Server (1.2.3)** - Noch nicht verfügbar (siehe [Manuelle Installation](#manuelle-installation))
+
+**Wichtig:** Im SMM siehst du nur "Satisfactory Plus", NICHT "SML".
+SML ist eine Dependency und wird automatisch installiert.
 
 ### Schritt 3: Spiel starten
 ```
