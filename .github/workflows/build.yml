@@ -1,0 +1,61 @@
+name: Build and Validate
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    name: Validate Plugin Structure
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Check file structure
+      run: |
+        echo "Checking plugin structure..."
+        test -f SatisfactoryPlusServer.uplugin || exit 1
+        test -f data.json || exit 1
+        test -f README.md || exit 1
+        test -d Source/SatisfactoryPlusServer || exit 1
+        echo "✅ Plugin structure valid"
+        
+    - name: Validate version consistency
+      run: |
+        echo "Checking version consistency..."
+        UPLUGIN_VERSION=$(grep -Po '"VersionName":\s*"\K[^"]+' SatisfactoryPlusServer.uplugin)
+        DATA_VERSION=$(grep -Po '"version":\s*"\K[^"]+' data.json)
+        
+        if [ "$UPLUGIN_VERSION" != "$DATA_VERSION" ]; then
+          echo "❌ Version mismatch: .uplugin=$UPLUGIN_VERSION, data.json=$DATA_VERSION"
+          exit 1
+        fi
+        
+        echo "✅ Version consistency check passed: v$UPLUGIN_VERSION"
+        
+    - name: Check for TODO items
+      run: |
+        echo "Scanning for TODO items..."
+        grep -rn "TODO:" Source/ || echo "No TODOs found"
+        
+  lint:
+    name: Code Quality Check
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Check C++ code style
+      run: |
+        echo "Checking C++ files..."
+        find Source -name "*.cpp" -o -name "*.h" | while read file; do
+          if ! grep -q "Copyright (c)" "$file"; then
+            echo "⚠️  Missing copyright header: $file"
+          fi
+        done
+        echo "✅ Code style check complete"
